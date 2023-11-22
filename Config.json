@@ -1,0 +1,31 @@
+{
+  "name": "QuickGPT",
+  "icon": "iconify:logos:openai-icon",
+  "identifier": "dev.dyptan.popclip.extension.chatgpt-inline-helper",
+  "description": "Use ChatGPT in all applications, select a text and use AI powered quick actions",
+  "entitlements": ["network"],
+  "requirements": ["text", "paste"],
+  "macosVersion": "14.0",
+  "popclipVersion": 4225,
+  "module": "chatgpt.js",
+  "app": {
+    "name": "ChatGPT",
+    "link": "https://openai.com/blog/chatgpt"
+  },
+  "options": [
+    {
+      "identifier": "apikey",
+      "label": "API Key",
+      "type": "string",
+      "description": "Generate an API key at https://platform.openai.com/account/api-keys"
+    },
+    {
+      "identifier": "model",
+      "label": "Model",
+      "type": "multiple",
+      "defaultValue": "gpt-3.5-turbo",
+      "description": "Specify the OpenAI model to use",
+      "values": ["gpt-4", "gpt-3.5-turbo"]
+    }
+  ]
+}

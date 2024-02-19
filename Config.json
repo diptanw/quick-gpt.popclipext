@@ -1,17 +1,14 @@
 {
   "name": "QuickGPT",
   "icon": "iconify:logos:openai-icon",
-  "identifier": "dev.dyptan.popclip.extension.chatgpt-inline-helper",
-  "description": "Use ChatGPT in all applications, select a text and use AI powered quick actions",
+  "identifier": "dev.dyptan.popclip.extension.quickqpt",
+  "description": "QuickGPT is an extension for PopClip that integrates OpenAI's powerful language models directly into your MacOS experience",
   "entitlements": ["network"],
   "requirements": ["text", "paste"],
+  "excludedApps": ["com.apple.Terminal"],
   "macosVersion": "14.0",
   "popclipVersion": 4225,
   "module": "chatgpt.js",
-  "app": {
-    "name": "ChatGPT",
-    "link": "https://openai.com/blog/chatgpt"
-  },
   "options": [
     {
       "identifier": "apikey",

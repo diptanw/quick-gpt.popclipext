@@ -6,6 +6,7 @@
 // entitlements: [network]
 // macos version: '14.0'
 // requirements: [text, paste]
+// excluded apps: [com.apple.Terminal]
 // options: [{
 //   identifier: apikey,
 //   label: API Key,
@@ -17,7 +18,7 @@
 //   type: multiple,
 //   defaultValue: "gpt-3.5-turbo",
 //   description: "Specify the OpenAI model to use",
-//   values: ["gpt-4", "gpt-3.5-turbo"]
+//   values: [gpt-4, gpt-3.5-turbo]
 // }]
 
 
@@ -59,7 +60,7 @@ exports.actions = [
   },
   {
     title: "Professional tone",
-    code:  async (i, o) => await callOpenAI(i, "Rewrite this using a professional tone: \n\n", o),
+    code:  async (i, o) => await callOpenAI(i, "Correct the grammar, and polish sentense: \n\n", o),
     icon: "symbol:brain.filled.head.profile",
   },
   {
@@ -68,13 +69,8 @@ exports.actions = [
     icon: "symbol:face.smiling",
   },
   {
-    title: "Summarize",
-    code: async (i, o) => await callOpenAI(i, "Summarize the following text as concise as possible: \n\n", o),
-    icon: "symbol:arrow.down.right.and.arrow.up.left",
-  },
-  {
     title: "Refactor Code",
-    requiredApps: ["com.microsoft.VSCode"],
+    requiredApps: ["com.microsoft.VSCode", "com.jetbrains.goland"],
     code: async (i, o) => await callOpenAI(i, "Refactor the following code, and provide only code, do not explain it: \n\n", o),
     icon: "symbol:apple.terminal",
   }

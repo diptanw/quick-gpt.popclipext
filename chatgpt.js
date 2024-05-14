@@ -16,9 +16,9 @@
 //   identifier: model,
 //   label: Model,
 //   type: multiple,
-//   defaultValue: "gpt-3.5-turbo",
+//   defaultValue: "gpt-4o",
 //   description: "Specify the OpenAI model to use",
-//   values: [gpt-4, gpt-3.5-turbo]
+//   values: [gpt-4o, gpt-4-turbo, gpt-4, gpt-3.5-turbo]
 // }]
 
 

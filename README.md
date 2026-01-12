@@ -5,9 +5,7 @@ QuickGPT is an extension for PopClip that integrates powerful language models di
 ## Features
 
 - **Grammar Check**: Corrects the grammar of the selected text.
-- **Professional Tone**: Rewrites text using a professional tone.
-- **Friendly Tone**: Rewrites text using a friendly tone.
-- **Refactor Code**: Refactors the selected code snippet.
+- **Custom Prompt**: Allows you to define your own prompt for text manipulation.
 
 ## Installation
 

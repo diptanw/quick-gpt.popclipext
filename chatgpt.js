@@ -17,12 +17,18 @@
 //   identifier: model,
 //   label: Model,
 //   type: string,
-//   defaultValue: "gpt-4o-mini",
+//   defaultValue: "gpt-4.1-nano",
 //   description: "Specify the LLM to use"
 // },{
 //   identifier: apikey,
 //   label: API Key,
 //   type: secret
+// },{
+//   identifier: customPrompt,
+//   label: Custom Prompt,
+//   type: string,
+//   defaultValue: "Format the text, or a code block, based on the content, don't add markdown tags",
+//   description: "Custom prompt to use with the selected text"
 // }]
 
 
@@ -40,7 +46,7 @@ async function callOpenAI(input, promptText, options) {
   const messages = [{ role: "user", content }];
 
   const { data } = await openai.post("chat/completions", {
-    model: options.model || "gpt-4o-mini",
+    model: options.model || "gpt-4.1-nano",
     messages,
   });
 
@@ -49,8 +55,7 @@ async function callOpenAI(input, promptText, options) {
   if (popclip.modifiers.command) {
     popclip.showText(response, {preview: true});
   } else {
-    popclip.pasteText(response, {restore: true});
-    popclip.showSuccess();
+    popclip.pasteText(response, {restore: true}); popclip.showSuccess();
   }
 
   return null;
@@ -59,23 +64,12 @@ async function callOpenAI(input, promptText, options) {
 exports.actions = [
   {
     title: "Check grammar",
-    code: async (i, o) => await callOpenAI(i, "Return only the grammar-corrected text without any explanations, notes, or additional content: \n\n", o),
+    code: async (i, o) => await callOpenAI(i, "[Instruction] Return only the grammar-corrected text without any explanations, notes, or additional content, [end of instruction]: \n\n", o),
     icon: "symbol:checkmark.seal",
   },
   {
-    title: "Professional tone",
-    code: async (i, o) => await callOpenAI(i, "Transform this text into a professional tone. Return only the revised text without any explanations or comments: \n\n", o),
-    icon: "symbol:brain.filled.head.profile",
-  },
-  {
-    title: "Friendly tone",
-    code: async (i, o) => await callOpenAI(i, "Rewrite this using a friendly, conversational tone. Return only the revised text without any explanations or comments: \n\n", o),
-    icon: "symbol:face.smiling",
-  },
-  {
-    title: "Refactor Code",
-    requiredApps: ["com.microsoft.VSCode", "com.jetbrains.goland"],
-    code: async (i, o) => await callOpenAI(i, "Refactor the following code for improved readability and efficiency. Return only the refactored code without comments, explanations, or markdown formatting: \n\n", o),
-    icon: "symbol:apple.terminal",
+    title: "Custom prompt",
+    code: async (i, o) => await callOpenAI(i, `[Instruction] ${o.customPrompt }. Return only result text without any explanations, notes, or comments, [end of instruction]: \n\n`, o),
+    icon: "symbol:wand.and.stars",
   }
 ];

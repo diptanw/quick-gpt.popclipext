@@ -21,13 +21,20 @@
       "identifier": "model",
       "label": "Model",
       "type": "string",
-      "defaultValue": "gpt-4o",
+      "defaultValue": "gpt-4.1-nano",
       "description": "Specify the LLM to use"
     },
     {
       "identifier": "apikey",
       "label": "API Key",
       "type": "secret"
+    },
+    {
+      "identifier": "customPrompt",
+      "label": "Custom Prompt",
+      "type": "string",
+      "defaultValue": "Format the text, or a code block, based on the content, don't add markdown tags",
+      "description": "Custom prompt to use with the selected text"
     }
   ]
 }
